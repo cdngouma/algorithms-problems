@@ -5,12 +5,13 @@
 
 public class Solution {
     public int titleToNumber(String A) {
-        int k = 0;
+        final int A_ASCII_VAL = 65;
+        int pow = 1;
         int column = 0;
         
-        while(k < A.length()) {
-            column += (A.charAt(A.length() - 1 - k) - 65 + 1) * Math.pow(26, k);
-            k++;
+        for(int i = A.length()-1; i >= 0; i--) {
+            column += pow * (A.charAt(i) - A_ASCII_VAL + 1);
+            pow *= 26;
         }
         return column;
     }
